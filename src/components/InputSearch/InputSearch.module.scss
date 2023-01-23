@@ -49,5 +49,11 @@ $size: 2.3rem;
       background-color: $text-muted-color;
       transform: translateY(-50%);
     }
+
+    &--clear {
+      &:after {
+        display: none;
+      }
+    }
   }
 }

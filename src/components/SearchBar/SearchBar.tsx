@@ -2,8 +2,10 @@
 import { Link } from 'react-router-dom';
 import clsx from 'clsx';
 
-import { useSearchBar } from 'controllers/components';
+// Assets
 import meliLogo from 'assets/meli-logo.png';
+
+import { useSearchBar } from 'controllers/components';
 import { InputSearch } from 'components';
 import { FC } from 'models/common';
 
@@ -30,7 +32,7 @@ const SearchBar: FC<SearchBarProps> = ({ fixed }) => {
           <InputSearch
             name='search'
             buttonProps={{ type: 'submit' }}
-            value={values.search}
+            value={values.search as string}
             onChange={handleChange}
             onBlur={handleBlur}
           />

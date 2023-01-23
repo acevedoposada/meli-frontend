@@ -1,5 +1,5 @@
-import { TfiSearch } from 'react-icons/tfi';
-
+import { TfiClose, TfiSearch } from 'react-icons/tfi';
+import clsx from 'clsx';
 import { FC } from 'models/common';
 
 import { InputSearchProps } from './InputSearch.interface';

@@ -1,0 +1,23 @@
+@import '../../core/sass/variables.scss';
+
+.Loader {
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 1000;
+  background-color: rgba($white-color, 0.5);
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  
+  &__animation {
+    width: 5rem;
+  }
+
+  &__title {
+    font-weight: 800;
+  }
+}
