@@ -1,3 +1,5 @@
+// Libraries
+import { Link } from 'react-router-dom';
 import clsx from 'clsx';
 
 import { useSearchBar } from 'controllers/components';
@@ -18,7 +20,9 @@ const SearchBar: FC<SearchBarProps> = ({ fixed }) => {
       })}
     >
       <div className={styles['SearchBar__elements']}>
-        <img src={meliLogo} alt='Meli logo' width={48} />
+        <Link to='/'>
+          <img src={meliLogo} alt='Meli logo' width={48} />
+        </Link>
         <form
           onSubmit={handleSubmit}
           className={styles['SearchBar__elements__form']}
