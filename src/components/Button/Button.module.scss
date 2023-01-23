@@ -2,18 +2,31 @@
 
 .Button {
   padding: 0.8rem 2rem;
-  background-color: $secondary-color;
-  color: $white-color;
   line-height: 1;
   font-size: 1.1rem;
   border-radius: 0.3rem;
   cursor: pointer;
+  
+  
+  &--contained {
+    color: $white-color;
+    background-color: $secondary-color;
 
-  &:focus {
-    outline: 0.2rem solid lighten($secondary-color, 20);
+    &:focus {
+      outline: 0.2rem solid lighten($secondary-color, 20);
+    }
+  
+    &:hover {
+      background-color: darken($secondary-color, 10);
+    }
   }
 
-  &:hover {
-    background-color: darken($secondary-color, 10);
+  &--link {
+    color: $secondary-color;
+    padding: 0.5rem 1rem;
+
+    &:hover {
+      background-color: lighten($black-color, 65);
+    }
   }
 }

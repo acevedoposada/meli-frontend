@@ -1,7 +1,7 @@
 import Lottie from 'react-lottie-player';
 import Helmet from 'react-helmet';
 
-import { Breadcrumbs, Loader, ProductCard } from 'components';
+import { Breadcrumbs, Loader, Pagination, ProductCard } from 'components';
 import { useListPage } from 'controllers/pages';
 
 import notFoundAnimation from 'assets/animations/not-found.json';
@@ -9,7 +9,8 @@ import notFoundAnimation from 'assets/animations/not-found.json';
 import styles from './List.module.scss';
 
 const List = () => {
-  const { search, items, breadcrumbs, loading } = useListPage();
+  const { search, items, breadcrumbs, loading, pagination, handlePagination } =
+    useListPage();
 
   return (
     <>
@@ -51,6 +52,9 @@ const List = () => {
             />
           ))}
         </section>
+        <div className={styles['List__pagination']}>
+          <Pagination {...pagination} onClick={handlePagination} />
+        </div>
       </div>
     </>
   );

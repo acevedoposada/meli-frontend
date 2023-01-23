@@ -7,6 +7,7 @@ export const useSearchBar = () => {
 
   const initial = new URLSearchParams(location.search).get('search');
 
+  // Form controller
   const { values, handleChange, handleBlur, handleSubmit } = useFormik({
     initialValues: { search: initial },
     onSubmit({ search }) {
