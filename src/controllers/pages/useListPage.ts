@@ -3,6 +3,11 @@ import { useEffect, useState } from 'react';
 
 import { api } from 'core/api';
 
+const INITIAL_PAGINATION = {
+  currentPage: 1,
+  totalPages: 1,
+};
+
 export const useListPage = () => {
   const navigate = useNavigate();
   const location = useLocation();
@@ -11,20 +16,18 @@ export const useListPage = () => {
   const [items, setItems] = useState([]);
   const [loading, setLoading] = useState(true);
   const [breadcrumbs, setBreadcrumbs] = useState([]);
-  const [pagination, setPagination] = useState({
-    currentPage: 1,
-    totalPages: 1,
-  });
+  const [pagination, setPagination] = useState(INITIAL_PAGINATION);
+
+  const q = new URLSearchParams(location.search).get('search') as string;
 
   useEffect(() => {
+    if (search !== q) setPagination(INITIAL_PAGINATION);
     searchItems();
   }, [location.search, pagination.currentPage]);
 
   // Use the api to get items
   const searchItems = () => {
     setLoading(true);
-    const locationSearch = location.search;
-    const q = new URLSearchParams(locationSearch).get('search') as string;
 
     if (!q) return navigate('/');
 
@@ -41,15 +44,15 @@ export const useListPage = () => {
           ...prev,
           totalPages: Math.ceil(data.pagination.total / 50),
         }));
+        window.scroll({
+          top: 0,
+        });
       })
       .finally(() => setLoading(false));
   };
 
   const handlePagination = (page: number) => {
     setPagination((prev) => ({ ...prev, currentPage: page }));
-    window.scroll({
-      top: 0,
-    });
   };
 
   return { search, items, breadcrumbs, loading, pagination, handlePagination };

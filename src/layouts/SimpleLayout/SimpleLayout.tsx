@@ -3,8 +3,11 @@ import { Outlet } from 'react-router-dom';
 import { SearchBar } from 'components';
 
 import styles from './SimpleLayout.module.scss';
+import { useSimpleLayout } from 'controllers/layouts';
 
 const SimpleLayout = () => {
+  useSimpleLayout();
+
   return (
     <main className={styles['SimpleLayout']}>
       <SearchBar fixed />
