@@ -1,0 +1,14 @@
+@import "../../core/sass/variables.scss";
+
+.List {
+  padding-bottom: 3rem;
+
+  &__breadcrumbs {
+    padding: .8rem 0;
+  }
+
+  &__items {
+    background-color: $white-color;
+    border-radius: .3rem;
+  }
+}

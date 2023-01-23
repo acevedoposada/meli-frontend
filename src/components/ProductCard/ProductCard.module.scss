@@ -1,0 +1,89 @@
+@import "../../core/sass/variables.scss";
+
+.ProductCard {
+  padding: 1.25rem;
+  border-bottom: thin solid $neutral-color;
+  display: flex;
+
+  &:last-child {
+    border-bottom: none;
+  }
+
+  &__image {
+    width: 10rem;
+    height: 10rem;
+    border-radius: 0.3rem;
+    object-fit: contain;
+  }
+
+  &__details {
+    padding: 1.5rem 0;
+    padding-left: 2rem;
+    width: 45%;
+
+    &__title {
+      font-size: 1.5rem;
+      margin-top: 1.2rem;
+    }
+
+    &__price {
+      font-size: 2rem;
+      letter-spacing: 0;
+
+      & > svg {
+        margin-left: 1rem;
+      }
+    }
+  }
+
+  &__seller {
+    padding-right: 2rem;
+    margin-left: auto;
+    width: 20%;
+    & > p {
+      font-size: 0.9rem;
+    }
+  }
+
+  @media screen and (max-width: 1080px) {
+    &__details {
+      &__title {
+        font-size: 1.2rem;
+      }
+    }
+  }
+
+  @media screen and (max-width: 620px) {
+    flex-direction: column;
+
+    &__image {
+      margin: 0 auto;
+      width: 12rem;
+      height: 12rem;
+    }
+
+    &__details {
+      width: auto;
+      flex: auto;
+      padding-right: 2rem;
+    }
+    
+    &__seller {
+      width: auto; 
+      flex: auto;
+      margin-left: 0;
+      padding-left: 2rem;
+    }
+  }
+
+  @media screen and (max-width: 420px) {
+    &__details {
+      padding-left: 0rem;
+      padding-right: 0rem;
+
+      &__title {
+        font-size: 1rem;
+      }
+    }
+  }
+}
