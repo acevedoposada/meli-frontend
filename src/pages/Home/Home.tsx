@@ -1,11 +1,11 @@
 // Libraries
 import Lottie from 'react-lottie-player';
 
-// Assets 
+// Assets
 import searchingAnimation from 'assets/animations/searching.json';
 
 // Components
-import { InputSearch } from 'components'
+import { InputSearch } from 'components';
 
 // Controllers
 import { useSearchBar } from 'controllers/components';
@@ -31,7 +31,7 @@ const Home = () => {
       >
         <InputSearch
           name='search'
-          value={values.search}
+          value={values.search ?? ''}
           onChange={handleChange}
           onBlur={handleBlur}
           buttonProps={{ type: 'submit' }}
