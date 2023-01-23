@@ -1,0 +1,105 @@
+@import "../../core/sass/breakpoints.scss";
+@import "../../core/sass/variables.scss";
+
+.Details {
+  padding-bottom: 3rem;
+
+  &__breadcrumbs {
+    padding: 0.8rem 0;
+    font-size: 0.7rem;
+    display: flex;
+    gap: 0.8rem;
+
+    &__link {
+      color: $secondary-color;
+      cursor: pointer;
+      white-space: nowrap;
+
+      &:hover {
+        text-decoration: underline;
+      }
+    }
+  }
+
+  &__content {
+    border-radius: .3rem;
+    padding: 2.5rem;
+    background-color: $white-color;
+    
+    &__details {
+      display: flex;
+      gap: 2rem;
+    }
+    
+    &__image {
+      flex: auto;
+      border-radius: .3rem;
+    }
+    
+    &__info {
+      width: 20rem;
+      &__condition {
+        color: darken($text-muted-color, $amount: 30)
+      }
+
+      & > h1 {
+        line-height: 1.2;
+      }
+
+      & > h3 {
+        font-size: 2.5rem;
+        margin: 1.5rem 0;
+        font-weight: 400;
+
+        & > sup {
+          font-size: 1.2rem;
+        }
+      }
+
+      &__button {
+        width: 100%;
+      }
+    }
+  }
+
+  &__description {
+    width: 80%;
+    margin-top: 2rem;
+
+    &__title {
+      font-size: 1.5rem;
+      font-weight: 500;
+      margin-bottom: 1.5rem;
+    }
+
+    & > p {
+      color: lighten($black-color, 20)
+    }
+  }
+
+  @media screen and (max-width: $mobile) {
+    &__content {
+      &__details{
+        flex-direction: column;
+      }
+
+      &__info {
+        width: 100%;
+
+        &__button {
+          margin-top: 2rem;
+        }
+      }
+
+      &__image {
+        width: 80%;
+        max-width: 20rem;
+        margin: 0 auto;
+      }
+    }
+
+    &__description {
+      width: 100%;
+    }
+  }
+}

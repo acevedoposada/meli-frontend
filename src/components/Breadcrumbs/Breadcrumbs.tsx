@@ -9,8 +9,11 @@ const Breadcrumbs: FC<BreadcrumbsProps> = ({ data, separator }) => {
     <div className={styles['Breadcrumbs']}>
       {data.map((bread, idx) => (
         <>
-          <p key={idx}>{bread}</p>
-          {idx !== data.length - 1 && (separator ?? <TfiAngleRight key={bread} size={9} />)}
+          <p key={idx} className={styles['Breadcrumbs__item']}>
+            {bread}
+          </p>
+          {idx !== data.length - 1 &&
+            (separator ?? <TfiAngleRight key={bread} size={9} />)}
         </>
       ))}
     </div>

@@ -6,8 +6,9 @@ import { FC } from 'models/common';
 
 import { LoaderProps } from './Loader.interface';
 import styles from './Loader.module.scss';
+import clsx from 'clsx';
 
-const Loader: FC<LoaderProps> = ({ open }) => {
+const Loader: FC<LoaderProps> = ({ open, variant = 'transparent' }) => {
   return (
     <AnimatePresence>
       {open && (
@@ -15,7 +16,7 @@ const Loader: FC<LoaderProps> = ({ open }) => {
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           exit={{ opacity: 0 }}
-          className={styles['Loader']}
+          className={clsx(styles['Loader'], styles[`Loader--${variant}`])}
         >
           <Lottie
             loop

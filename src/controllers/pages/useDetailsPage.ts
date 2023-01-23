@@ -1,4 +1,4 @@
-import { useParams } from 'react-router-dom';
+import { useLocation, useNavigate, useParams } from 'react-router-dom';
 import { useEffect, useState } from 'react';
 
 import { Product } from 'models/product';
@@ -6,6 +6,9 @@ import { api } from 'core/api';
 
 export const useDetailsPage = () => {
   const { id } = useParams();
+
+  const navigate = useNavigate();
+  const location = useLocation();
 
   const [breadcrumbs, setBreadcrumbs] = useState([]);
   const [product, setProduct] = useState<Partial<Product>>({});
@@ -19,5 +22,7 @@ export const useDetailsPage = () => {
     });
   }, []);
 
-  return { breadcrumbs, product };
+  const goBack = () => navigate(-1);
+
+  return { breadcrumbs, product, goBack };
 };

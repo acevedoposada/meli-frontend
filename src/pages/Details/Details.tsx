@@ -1,34 +1,59 @@
-import { Breadcrumbs } from 'components';
 import { useDetailsPage } from 'controllers/pages';
+import { Breadcrumbs, Button, Loader } from 'components';
+
+import styles from './Details.module.scss';
+import { productConditions } from 'constants/product-conditions';
 
 const Details = () => {
-  const { breadcrumbs, product } = useDetailsPage();
+  const { breadcrumbs, product, goBack } = useDetailsPage();
+  const amount = product.price?.amount?.toFixed?.(2)?.split('.') as string[];
 
   return (
-    <div>
-      <div>
-        <Breadcrumbs data={breadcrumbs} />
-      </div>
-      <section>
-        <div>
-          <img src={product?.picture} />
-          <div>
-            <p>{product.condition}</p>
-            <h1>{product.title}</h1>
-            <h3>
-              {product.price?.currency}{' '}
-              {product.price?.amount &&
-                new Intl.NumberFormat('de-DE').format(product.price?.amount)}
-            </h3>
-            <button>Comprar</button>
+    <>
+      <Loader open={!product.id} variant='solid' />
+      <div className={styles['Details']}>
+        <div className={styles['Details__breadcrumbs']}>
+          <a className={styles['Details__breadcrumbs__link']} onClick={goBack}>
+            Volver a la lista
+          </a>{' '}
+          |
+          <Breadcrumbs data={breadcrumbs} />
+        </div>
+        <section className={styles['Details__content']}>
+          <div className={styles['Details__content__details']}>
+            <img
+              src={product?.picture}
+              className={styles['Details__content__image']}
+            />
+            <div className={styles['Details__content__info']}>
+              <p className={styles['Details__content__info__condition']}>
+                {productConditions[
+                  product.condition as keyof typeof productConditions
+                ] ?? null}
+              </p>
+              <h1 className={styles['Details__content__title']}>
+                {product.title}
+              </h1>
+              <h3>
+                {product.price?.currency}{' '}
+                {product.price?.amount &&
+                  new Intl.NumberFormat('de-DE').format(Number(amount?.[0]))}
+                <sup>{amount?.[1]}</sup>
+              </h3>
+              <Button className={styles['Details__content__info__button']}>
+                Comprar
+              </Button>
+            </div>
           </div>
-        </div>
-        <div>
-          <h5>Descripción del producto</h5>
-          <p>{product.description}</p>
-        </div>
-      </section>
-    </div>
+          <div className={styles['Details__description']}>
+            <h5 className={styles['Details__description__title']}>
+              Descripción del producto
+            </h5>
+            <p>{product.description}</p>
+          </div>
+        </section>
+      </div>
+    </>
   );
 };
 

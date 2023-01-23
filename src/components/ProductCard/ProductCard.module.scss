@@ -1,3 +1,4 @@
+@import "../../core/sass/breakpoints.scss";
 @import "../../core/sass/variables.scss";
 
 .ProductCard {
@@ -48,7 +49,7 @@
     }
   }
 
-  @media screen and (max-width: 1080px) {
+  @media screen and (max-width: $desktop) {
     &__details {
       &__title {
         font-size: 1.2rem;
@@ -56,7 +57,7 @@
     }
   }
 
-  @media screen and (max-width: 620px) {
+  @media screen and (max-width: $tablet) {
     flex-direction: column;
 
     &__image {
@@ -76,11 +77,10 @@
       width: auto; 
       flex: auto;
       margin-left: 0;
-      padding-left: 1.2rem;
     }
   }
 
-  @media screen and (max-width: 420px) {
+  @media screen and (max-width: $mobile) {
     &__details {
       padding-left: 0rem;
       padding-right: 0rem;

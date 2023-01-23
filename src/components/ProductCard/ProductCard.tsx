@@ -14,6 +14,7 @@ const ProductCard: FC<ProductCardProps> = ({
   seller,
   link,
   path,
+  linkState,
 }) => {
   const content = (
     <>
@@ -38,7 +39,11 @@ const ProductCard: FC<ProductCardProps> = ({
 
   if (link)
     return (
-      <Link className={styles['ProductCard']} to={path as string}>
+      <Link
+        className={styles['ProductCard']}
+        to={path as string}
+        state={linkState}
+      >
         {content}
       </Link>
     );

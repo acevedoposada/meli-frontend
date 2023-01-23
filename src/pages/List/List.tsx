@@ -47,6 +47,7 @@ const List = () => {
               seller={author.name}
               path={item.id}
               link
+              linkState={{ search }}
             />
           ))}
         </section>
