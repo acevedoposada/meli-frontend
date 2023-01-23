@@ -1,8 +1,10 @@
-import { useDetailsPage } from 'controllers/pages';
+import { Helmet } from 'react-helmet';
+
+import { productConditions } from 'constants/product-conditions';
 import { Breadcrumbs, Button, Loader } from 'components';
+import { useDetailsPage } from 'controllers/pages';
 
 import styles from './Details.module.scss';
-import { productConditions } from 'constants/product-conditions';
 
 const Details = () => {
   const { breadcrumbs, product, goBack } = useDetailsPage();
@@ -10,6 +12,9 @@ const Details = () => {
 
   return (
     <>
+      <Helmet>
+        <title>{`${product.title} | Mercado Libre`}</title>
+      </Helmet>
       <Loader open={!product.id} variant='solid' />
       <div className={styles['Details']}>
         <div className={styles['Details__breadcrumbs']}>
