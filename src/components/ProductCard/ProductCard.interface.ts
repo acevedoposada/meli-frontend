@@ -1,3 +1,7 @@
 import { Product } from 'models/product';
 
-export type ProductCardProps = Product;
+export interface ProductCardProps extends Product {
+  seller?: string;
+  link?: boolean;
+  path?: string;
+}

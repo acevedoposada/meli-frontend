@@ -24,7 +24,7 @@ const List = () => {
           ))}
         </div>
 
-        {items.length === 0 && (
+        {items.length === 0 && !loading && (
           <div className={styles['List__not-found']}>
             <Lottie
               className={styles['List__not-found__animation']}
@@ -41,7 +41,13 @@ const List = () => {
 
         <section className={styles['List__items']}>
           {items.map(({ item, author }: any) => (
-            <ProductCard key={item.id} {...item} seller={author.name} />
+            <ProductCard
+              key={item.id}
+              {...item}
+              seller={author.name}
+              path={item.id}
+              link
+            />
           ))}
         </section>
       </div>

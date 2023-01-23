@@ -1,7 +1,7 @@
-import { Navigate, useRoutes } from 'react-router-dom';
+import { useRoutes } from 'react-router-dom';
 
+import { HomePage, ListPage, DetailsPage } from 'pages';
 import { SimpleLayout } from 'layouts';
-import { HomePage, ListPage } from 'pages';
 
 const Router = () => {
   const routes = useRoutes([
@@ -10,13 +10,22 @@ const Router = () => {
       element: <SimpleLayout />,
       children: [
         {
-          path: '/',
           element: <HomePage />,
           index: true,
         },
+      ],
+    },
+    {
+      path: '/items',
+      element: <SimpleLayout />,
+      children: [
         {
-          path: '/items',
           element: <ListPage />,
+          index: true,
+        },
+        {
+          path: ':id',
+          element: <DetailsPage />,
         },
       ],
     },
